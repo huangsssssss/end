@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="hello1" onclick="sayHello()">
+
+<p></p>
+
+<input type="button" value="hello2" id="sayHello">
+
+
+
+<script type="text/javascript">
+    //当页面加载完毕之后调用 给id="sayHello"的元素绑定点击事件
+    //什么是Load事件呢？onload(装载)load事件什么时候发生？注意：页面加载完毕之后，load事件发生
+    //function是一个回调函数，在load事件发生之后，这个回调函数才会执行
+  window.onload = function (){
+   var sayHello = document.getElementById('sayHello');//获取id=sayHello的元素，新建sayHello对象接收元素
+   sayHello.onclick = function(){ //给id=sayHello绑定一个(click)点击事件
+     alert("hello2");//当sayHello被click(点击)的时候,被鼠标点击的时候，这个回调函数才会执行
+     // alert(this.value)                 //单击一次执行一次,单击五次这个回调函数就会执行五次
+
+   }
+  }
+</script>
+
+
+<script type="text/javascript">
+  function sayHello(){
+    alert("Hello!");
+  }
+</script>
+
+<!--<input type="button" value="Hello3!" id="btn">-->
+<!--<script type="text/javascript">-->
+<!--    window.onload = function() {-->
+<!--       var btn =document.getElementById('btn')-->
+<!--        btn.onclick = function () {-->
+<!--           alert("Hello123!");-->
+<!--        }-->
+
+<!--    }-->
+<!--</script>-->
+
+</body>
+</html>

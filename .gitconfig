@@ -1,0 +1,8 @@
+[user]
+	name = username
+	email = “2810277205@qq.com”
+	name = username
+[credential "https://gitee.com"]
+	provider = generic
+[core]
+excludesfile = D:/BaiduNetdiskDownload/java/springboot/x-mall/end/git.ignore

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="hello ajax" id="helloBtn" ><br/><p></p>
+
+用户名：<input type="text" id="username" placeholder="请输入用户名"> <br /><p></p>
+密 码：<input type="text" id="password" placeholder="请输入密码">
+
+<div id="mydiv" style="color: #409EFF"></div>
+<script type="text/javascript">
+  // load：装载
+  window.onload = function () {
+    document.getElementById("helloBtn").onclick = function () {
+        console.log("Hello!");
+        //第一步：创建ajax核心对象XMLHttpRequest
+       var xhr = new XMLHttpRequest();
+       //第二步：注册回调函数
+      xhr.onreadystatechange = function () {
+        // console.log(xhr.readyState);
+
+          if (xhr.readyState == 4) {
+              console.log("响应结束了")
+              console.log("响应状态吗" + this.status)
+              if (this.status == 404) {
+                  alert("对不起，您访问的资源路径不存在！请检查请求路径")
+              } else if (this.status == 500) {
+                  alert("对不起，服务器发生了严重的错误")
+              } else if (this.status == 200) {
+                  // alert("请求成功！")
+                  // alert(this.responseText)
+                  document.getElementById("mydiv").innerHTML = this.responseText
+                  // window.location.href='http://localhost:9999/login.html'
+
+              }
+          }
+      }
+      //第三步：开启通道
+      //XMLHttpRequest对象的open方法
+      //open(method,url,async,user,psw)
+      //method：请求的方式，可以是GET，也可以是POST,也可以是其他请求方式
+        var username = document.getElementById("username").value
+        var password = document.getElementById("password").value
+
+      xhr.open("GET","/api/user/test?username=" +username+ "&password="+password,true)
+
+
+      //第四步发送请求
+      xhr.send()
+    }
+  }
+</script>
+
+</body>
+</html>
